@@ -1,7 +1,10 @@
 server:
   port: 8081
+  shutdown: graceful
 
 spring:
+  application:
+    name: product-service
   datasource:
     url: jdbc:h2:mem:ecommerce-product
     username: sa
@@ -11,3 +14,53 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+          - prometheus
+
+  endpoint:
+    health:
+      show-details: when_authorized
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+  opentelemetry:
+    logging:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/logs
+        schedule-delay: 1s
+            
+  otlp:
+    metrics:
+      export:
+        enabled: false
+          
+  tracing:
+    sampling:
+      probability: 1.0
+    export:
+      otlp:
+        enabled: false
+          
+
+logging:
+  pattern:
+    level: "%5p [%X{traceId:-},%X{spanId:-}]"
+  level:
+    root: INFO
+
+info:
+  application:
+    name: Product Service
+    description: Product Microservice
+    version: 1.0.0

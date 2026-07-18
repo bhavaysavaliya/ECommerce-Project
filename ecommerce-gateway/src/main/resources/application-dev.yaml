@@ -79,16 +79,37 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
+  
+  opentelemetry:
+    logging:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/logs
+        schedule-delay: 1s
+          
+  otlp:
+    metrics:
+      export:
+        enabled: false
+          
+  tracing:
+    sampling:
+      probability: 1.0
+    export:
+      otlp:
+        enabled: false
 
 logging:
+  pattern:
+    level: "%5p [%X{traceId:-},%X{spanId:-}]"
   level:
     root: INFO
-    org.springframework.cloud.gateway: INFO
-    org.springframework.web: INFO
-    reactor.netty: INFO
+    "[org.springframework.cloud.gateway]": INFO
+    "[org.springframework.web]": INFO
+    "[reactor.netty]": INFO
+    "[org.springframework.cloud.gateway.handler.predicate]": TRACE
+    "[reactor.netty.http.client]": DEBUG
 
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
 
 info:
   application:
