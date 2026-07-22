@@ -1,0 +1,16 @@
+spring:
+  main:
+    web-application-type: reactive
+  http:
+    codecs:
+      max-in-memory-size: 10MB
+  config:
+    import:
+      - classpath:config/dev/cors-dev.yml
+      - classpath:config/dev/httpclient-dev.yml
+      - classpath:config/dev/info-dev.yml
+      - classpath:config/dev/observability-logging-dev.yml
+      - classpath:config/dev/observability-management-dev.yml
+      - classpath:config/dev/observability-otel-dev.yml
+      - classpath:config/dev/routes-dev.yml
+      - classpath:config/dev/server-dev.yml

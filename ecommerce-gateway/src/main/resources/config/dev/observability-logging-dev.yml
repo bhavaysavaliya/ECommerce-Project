@@ -1,0 +1,8 @@
+logging:
+  level:
+    root: INFO
+    "[org.springframework.cloud.gateway]": INFO
+    "[org.springframework.web]": INFO
+    "[reactor.netty]": INFO
+    "[org.springframework.cloud.gateway.handler.predicate]": TRACE
+    "[reactor.netty.http.client]": DEBUG

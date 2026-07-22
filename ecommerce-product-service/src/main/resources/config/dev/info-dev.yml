@@ -1,0 +1,5 @@
+info:
+  application:
+    name: Product Service
+    description: Product Microservice
+    version: 1.0.0

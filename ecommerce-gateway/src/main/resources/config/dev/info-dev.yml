@@ -1,0 +1,5 @@
+info:
+  application:
+    name: API Gateway
+    description: Enterprise API Gateway
+    version: 1.0.0

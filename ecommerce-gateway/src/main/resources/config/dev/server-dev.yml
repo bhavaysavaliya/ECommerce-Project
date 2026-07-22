@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  shutdown: graceful
+  forward-headers-strategy: framework
+  compression:
+    enabled: true
+    mime-types:
+      - application/json
+      - application/xml
+      - text/xml
+      - text/html
+      - text/plain
+    min-response-size: 2KB

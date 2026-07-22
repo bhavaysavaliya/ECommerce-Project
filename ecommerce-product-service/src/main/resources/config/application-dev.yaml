@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: product-service
+  config:
+    import:
+      - classpath:config/dev/server-dev.yml
+      - classpath:config/dev/database-dev.yml
+      - classpath:config/dev/observability-management-dev.yml
+      - classpath:config/dev/observability-logging-dev.yml
+      - classpath:config/dev/observability-otel-dev.yml
+      - classpath:config/dev/info-dev.yml
